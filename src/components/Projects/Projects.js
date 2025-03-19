@@ -7,6 +7,7 @@ import vacaybuddy from "../../Assets/Projects/Vacay.png";
 import news from "../../Assets/Projects/News.png";
 import music from "../../Assets/Projects/music.png";
 import ipl from "../../Assets/Projects/IPL.png";
+import resume from "../../Assets/Projects/resume.png"
 import employee from "../../Assets/Projects/Employee.png";
 import cancer from "../../Assets/Projects/cancer.png";
 function Projects() {
@@ -36,8 +37,18 @@ function Projects() {
               imgPath={vacaybuddy}
               isBlog={false}
               title="Flight Booking System-VacayBuddy"
-              description="Developed a user platform for flight booking, itinerary management, search, and recommendations. The system suggested 5 similar places based on user searches or itinerary additions, with data cached for future recommendations."
+              description="Developed a user platform for flight booking, itinerary management, search, and recommendations. The ystem suggested 5 similar places based on user searches or itinerary additions, with data cached for future recommendations."
               ghLink="https://github.com/juyee1698/VacayBuddy-backend"
+            />
+          </Col>
+
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={resume}
+              isBlog={false}
+              title="Fix Your Resume"
+              description="Fix Your ResumeAn AI-powered tool using Gemini's AI prompt engineering to optimize resumes. Users upload their resumes and a job description, receiving tailored suggestions to add keywords, align content, and enhance their chances of landing the job."
+              ghLink="https://github.com/prachi1211/FixYourResume"
             />
           </Col>
 
@@ -76,8 +87,7 @@ function Projects() {
               imgPath={cancer}
               isBlog={false}
               title="Breast Cancer Detection"
-              description="
-Image data analysis was performed using processing techniques to enhance detection accuracy in distinguishing between benign and malignant tumors. A deep learning model, specifically Inception v3, was implemented to extract features and classify tumor spots based on a defined threshold after image cleaning."
+              description="Image data analysis was performed using processing techniques to enhance detection accuracy in distinguishing between benign and malignant tumors. A deep learning model, specifically Inception v3, was implemented to extract features and classify tumor spots based on a defined threshold after image cleaning."
               ghLink="https://github.com/prachi1211/Breast-Cancer-Detection"
             />
           </Col>
