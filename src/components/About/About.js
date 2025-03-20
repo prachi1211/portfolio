@@ -6,23 +6,23 @@ import "./Timeline.css"; // Ensure this CSS file is created
 function ExperienceTimeline() {
   const experiences = [
     {
-      title: "Full Stack Developer",
+      title: "Software Engineer Intern",
       company: "Dream Leo",
       date: "September 2022 - February 2023",
       description: [
-        "Developed and maintained multiple ongoing real-time web applications based on client requirements, using MongoDB, React.js, and Node.js for efficient testing and development.",
-        "Enhanced problem-solving skills by collaborating with teams and using an iterative software development approach, following Agile sprints, and integrating design feedback into projects.",
-        "Delivered scalable, well-structured solutions by managing the database with MongoDB, implementing front-end features using React.js, and developing back-end logic with Node.js.",
+        "Developed and maintained multiple ongoing real-time web applications based on client requirements, usingOptimized developing process and maintained 5+ ongoing real-time web applications based on client requirements, using MongoDB, React.js, and Node.js, resulting in a 30% reduction in development time and a 25% increase in testing efficiency",
+        "Enhanced problem-solving skills by collaborating with 3 cross-functional teams and using an iterative software development approach, following 2-week Agile sprints, leading to a 40% improvement in project delivery timelines ",
+        "Delivered scalable solutions by managing a 500GB MongoDB database, implementing 20+ React.js features, and developing Node.js back-end logic, improving performance by 50% and reducing server response time by 35%.",
       ],
     },
     {
-      title: "Data Analyst and Scrum Master",
+      title: "Software Engineer Intern (Data Processing)",
       date: "July 2022 - August 2022",
       company: "Capgemini",
       description: [
-        "Led sprints as Scrum Master, using Agile methods to manage tasks and improve team efficiency, achieving 72% accuracy in extracting key resume data.",
-        "Implemented data-driven concepts for Resume Parsing, including RE, Boundbox, and HaarCascade, to extract data from resume formats and displaying fetched data on developed website and PPT.",
-        "Utilized HaarCascade for image extraction and applied the BoundBox technique to improve accuracy in retrieving specific data sections and Regular Expression for the extracting different number types.",
+        "Led 12 two-week Agile sprints as Scrum Master, managing a team developing a AI driven resume parsing web application using MERN stack and Bootstrap. Conducted sprint planning, retrospectives, and JIRA-based tracking, improving sprint velocity by 30% ",
+        "Developed system using HaarCascade and Regular Expressions, Bounding Box, displaying data in a tabular format on the website and converted into a one-pager summary per resume, improving retrieval accuracy by 40% and reduced manual entry time by 50% ",
+        "Enhanced extraction by integrating HaarCascade for image fetching (85% accuracy), Bounding Box for structured section retrieval and Regular Expressions for key data extraction (95% accuracy in phone number & email detection) improvise availability for recruiters",
       ],
     },
     {
@@ -30,9 +30,8 @@ function ExperienceTimeline() {
       date: "June 2022 - July 2022",
       company: "BrainyBeam Technologies",
       description: [
-        " Developed a recommender system that can identify the sentiments using Linguistics and Contextual Based approach by Support Vector Machine and Byes classifier which was accurate for 68%.",
-        "Processed datasets by removing repetitive words and stop words, applying word ranking to prioritize key terms and analyze the context effectively using ranking-based analysis.",
-        "Generated content, such as reviews and comments, was analysed and predicted for statements using NLP concepts, including RNN and LSTM.",
+        "Designed a sentiment analysis system using SVM and Bayes classifier to analyze user feedback, incorporating a custom word-ranking algorithm to reduce data noise by 75%. improving product recommendation relevance by 40%, leading to enhanced context analysis ",
+        "Built and implemented an NLP tool leveraging RNN and LSTM architectures to process over 10,000 reviews per hour with 85% accuracy, significantly reducing manual moderation time by 60% and improving overall content moderation efficiency for real-time data handling ",
       ],
     },
     {

@@ -21,27 +21,29 @@ function Home2() {
               <b className="purple"> Indiana University Bloomington.</b>
               <br />
               <br />
-              As an lead intern at <b className="purple">Women Who Code</b>, I
-              collaborate on generating innovative tech ideas and work on
-              exciting new projects. I also lead workshops on a range of
-              technologies, including{" "}
-              <b className="purple">
-                SQL, Python, Netwroking tips, Data Structures, and more{" "}
-              </b>
-              , empowering others to advance their technical and networking
-              skills.
-              <br />
+              As an lead intern at{" "}<b className="purple">
               <a
                 href="https://womenandtech.indiana.edu/programs/student-alliance-groups/women-who-code.html/"
                 style={{
                   fontStyle: "italic",
                   textDecoration: "underline",
                   fontWeight: "bold",
-                  color: "#231f9c",
+                  color: "#6f42c1",
                 }}
               >
                 Women Who Code
-              </a>
+              </a>{" "}
+              </b>
+              collaborate on generating innovative tech ideas and work on
+              exciting new projects. I also lead workshops on a range of
+              technologies, including{" "}
+              <b className="purple">
+                SQL, Python, Networking tips, Data Structures, and more{" "}
+              </b>
+              , empowering others to advance their technical and networking
+              skills.
+              <br />
+              
               <br />
               <br></br>
               During my internship at Capgemini, I worked as a{" "}
