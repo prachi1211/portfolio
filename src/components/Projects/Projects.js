@@ -22,6 +22,15 @@ function Projects() {
           Here are a few projects I've worked on.
         </p>
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
+        <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={employee}
+              isBlog={false}
+              title="Crimson Compass Course"
+              description="Crimson Course Compass is an AI-powered course selection assistant that helps university students seamlessly choose the most suitable courses for their semester. By combining intelligent recommendations with a conversational chatbot, the platform personalizes suggestions based on key inputs like career goals, preferred subjects (both required), preferred days, and enrollment type. Students can search for courses, receive tailored recommendations, interact with the AI assistant, and manage a Wishlist of selected courses. With features like alternative course suggestions and context-aware responses, Crimson Course Compass streamlines the decision-making process and ensures students stay aligned with their academic and career goals."
+              ghLink= "https://github.com/prachi1211/iu-course-compass-ai"
+            />
+          </Col>
           <Col md={4} className="project-card">
             <ProjectCard
               imgPath={youtube}
