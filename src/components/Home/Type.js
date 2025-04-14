@@ -17,6 +17,7 @@ function Type() {
             "Software Engineer",
             "Data Analyst",
             "Software Developer",
+            "AI Engineer",
           ],
           autoStart: true,
           loop: true,
