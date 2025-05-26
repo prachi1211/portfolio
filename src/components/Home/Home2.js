@@ -17,11 +17,23 @@ function Home2() {
               LET ME <span className="purple">INTRODUCE</span> MYSELF
             </h1>
             <p className="home-about-body">
-              I am student pursuing Master's degree in Computer Science at
+              I completed Master in Science in Computer Science at
               <b className="purple"> Indiana University Bloomington.</b>
               <br />
               <br />
-              As an lead intern at{" "}<b className="purple">
+              I am an incoming Data Intern at{" "}
+              <a
+                href="https://womenandtech.indiana.edu/programs/student-alliance-groups/women-who-code.html/"
+                style={{
+                  fontStyle: "italic",
+                  textDecoration: "underline",
+                  fontWeight: "bold",
+                  color: "#6f42c1",
+                }}
+              >
+                Center of Excellence for Women & Technology
+              </a>{" "}{" "} 
+              . As an team lead at{" "}<b className="purple">
               <a
                 href="https://womenandtech.indiana.edu/programs/student-alliance-groups/women-who-code.html/"
                 style={{
@@ -47,9 +59,9 @@ function Home2() {
               <br />
               <br></br>
               During my internship at Capgemini, I worked as a{" "}
-              <b className="purple">Data Analyst and Scrum Master</b>.
+              <b className="purple">Software Engineer and Scrum Master</b>.
               Additionally, I gained experience as a{" "}
-              <b className="purple">Full Stack Developer</b> at Dream Leo and as
+              <b className="purple">Software Engineer</b> at Dream Leo and as
               a <b className="purple">Data Scientist</b> at Brainy Beam
               Technologies. I also played a key role in organizing a
               national-level hackathon called{" "}
