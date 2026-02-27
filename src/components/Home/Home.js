@@ -1,245 +1,161 @@
-// // import React from "react";
-// // import { Container, Row, Col } from "react-bootstrap";
-// // import homeLogo from "../../Assets/file.png";
-// // import Particle from "../Particle";
-// // import Home2 from "./Home2";
-// // import Type from "./Type";
+import React, { useEffect, useState } from "react";
+import { AiFillGithub } from "react-icons/ai";
+import { FaLinkedinIn } from "react-icons/fa";
+import { HiOutlineMail } from "react-icons/hi";
+import { FiDownload } from "react-icons/fi";
+import photo from "../../Assets/prachi_formal_final.jpg";
+import resumePDF from "../../Assets/Prachi_Piyushbhai_Jethava_resume.pdf";
 
-// // function Home() {
-// //   return (
-// //     <section>
-// //       <Container fluid className="home-section" id="home">
-// //         <Particle />
-// //         <Container className="home-content">
-// //           <Row className="justify-content-center">
-// //             {" "}
-// //             {/* Centering content */}
-// //             <Col
-// //               md={7}
-// //               xs={12} // Full-width column on small screens
-// //               className="home-header"
-// //               style={{ paddingLeft: "20px", paddingTop: "-100px" }}
-// //             >
-// //               <h1
-// //                 style={{
-// //                   paddingTop: "0px",
-// //                   paddingBottom: "10px",
-// //                   marginBottom: "20px",
-// //                 }}
-// //                 className="heading"
-// //               >
-// //                 Hi There!{" "}
-// //                 <span className="wave" role="img" aria-labelledby="wave">
-// //                   👋🏻
-// //                 </span>
-// //               </h1>
+const ROLES = ["Software Engineer", "Full Stack Developer", "Web Developer"];
 
-// //               <h1 className="heading-name" style={{ marginBottom: "15px" }}>
-// //                 I'M
-// //                 <strong className="main-name"> PRACHI JETHAVA</strong>
-// //               </h1>
+function useTypewriter(words) {
+  const [index, setIndex] = useState(0);
+  const [displayed, setDisplayed] = useState("");
+  const [typing, setTyping] = useState(true);
 
-// //               <div style={{ padding: 50, textAlign: "left" }}>
-// //                 <Type />
-// //               </div>
-// //             </Col>
-// //             <Col
-// //               md={5}
-// //               xs={12} // Full-width column on small screens
-// //               className="d-flex justify-content-center" // Center image on small screens
-// //               style={{ paddingBottom: 20 }}
-// //             >
-// //               <img
-// //                 src={homeLogo}
-// //                 alt="Prachi's formal pic"
-// //                 className="img-fluid"
-// //                 style={{
-// //                   maxHeight: "500px",
-// //                   borderRadius: "20%",
-// //                   marginTop: "-60px",
-// //                   marginLeft: "0px", // Removed left margin for better small screen experience
-// //                 }}
-// //               />
-// //             </Col>
-// //           </Row>
-// //         </Container>
-// //       </Container>
-// //       <Home2 />
-// //     </section>
-// //   );
-// // }
+  useEffect(() => {
+    const current = words[index];
+    let timeout;
 
-// // export default Home;
+    if (typing) {
+      if (displayed.length < current.length) {
+        timeout = setTimeout(
+          () => setDisplayed(current.slice(0, displayed.length + 1)),
+          80,
+        );
+      } else {
+        timeout = setTimeout(() => setTyping(false), 2200);
+      }
+    } else {
+      if (displayed.length > 0) {
+        timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 40);
+      } else {
+        setIndex((i) => (i + 1) % words.length);
+        setTyping(true);
+      }
+    }
+    return () => clearTimeout(timeout);
+  }, [displayed, typing, index, words]);
 
-// import React from "react";
-// import { Container, Row, Col } from "react-bootstrap";
-// import homeLogo from "../../Assets/file.png"; // Update with actual image path
-// import Particle from "../Particle";
-// import Home2 from "./Home2";
-// import Type from "./Type";
+  return displayed;
+}
 
-// function Home() {
-//   return (
-//     <section>
-//       <Container fluid className="home-section" id="home">
-//         <Particle />
-//         <Container className="home-content">
-//           <Row className="justify-content-center">
-//             {/* Text Section */}
-//             <Col
-//               md={7}
-//               xs={12}
-//               className="home-header"
-//               style={{
-//                 paddingLeft: "20px",
-//                 paddingTop: "0px", // Default for larger screens
-//                 ...(window.innerWidth < 768
-//                   ? { textAlign: "center" } // Adjust for mobile
-//                   : {}),
-//               }}
-//             >
-//               <h1
-//                 style={{
-//                   paddingTop: "0px",
-//                   paddingBottom: "10px",
-//                   marginBottom: "20px",
-//                 }}
-//                 className="heading"
-//               >
-//                 Hi There!{" "}
-//                 <span className="wave" role="img" aria-labelledby="wave">
-//                   👋🏻
-//                 </span>
-//               </h1>
+function Hero() {
+  const role = useTypewriter(ROLES);
 
-//               <h1 className="heading-name" style={{ marginBottom: "15px" }}>
-//                 I'M
-//                 <strong className="main-name"> PRACHI JETHAVA</strong>
-//               </h1>
+  const scrollTo = (id) =>
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
-//               <div
-//                 style={{
-//                   padding: window.innerWidth < 768 ? "30px" : "50px",
-//                   textAlign: window.innerWidth < 768 ? "center" : "left",
-//                 }}
-//               >
-//                 <Type />
-//               </div>
-//             </Col>
-
-//             {/* Image Section */}
-//             <Col
-//               md={5}
-//               xs={12}
-//               className="d-flex justify-content-center align-items-center"
-//               style={{
-//                 paddingBottom: 20,
-//                 ...(window.innerWidth < 768 ? { marginTop: "20px" } : {}),
-//               }}
-//             >
-//               <img
-//                 src={homeLogo}
-//                 alt="Prachi's formal pic"
-//                 className="img-fluid"
-//                 style={{
-//                   maxHeight: window.innerWidth < 768 ? "300px" : "500px", // Adjust image height for smaller screens
-//                   borderRadius: "20%",
-//                   marginTop: window.innerWidth < 768 ? "0px" : "-60px", // Reset margin for smaller screens
-//                   marginLeft: "0px", // Removed left margin for better small screen experience
-//                 }}
-//               />
-//             </Col>
-//           </Row>
-//         </Container>
-//       </Container>
-//       <Home2 />
-//     </section>
-//   );
-// }
-
-// export default Home;
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import homeLogo from "../../Assets/file.png"; // Update with actual image path
-import Particle from "../Particle";
-import Home2 from "./Home2";
-import Type from "./Type";
-
-function Home() {
   return (
-    <section>
-      <Container fluid className="home-section" id="home">
-        <Particle />
-        <Container className="home-content">
-          <Row className="justify-content-center">
-            {/* Text Section */}
-            <Col
-              md={7}
-              xs={12}
-              className="home-header"
-              style={{
-                paddingLeft: "20px",
-                paddingTop: "0px",
-                textAlign: "center", // Ensures text is centered on mobile
-              }}
-            >
-              <h1
-                style={{
-                  paddingTop: "0px",
-                  paddingBottom: "10px",
-                  marginBottom: "20px",
-                }}
-                className="heading"
+    <section id="hero" className="hero-section">
+      <div className="hero-container">
+        {/* ── Text Column ── */}
+        <div className="hero-text-col">
+          {/* Each child has a staggered hero-animate class */}
+          <div className="hero-animate hero-animate-1">
+            <span className="hero-tag">
+              <span className="hero-tag-dot" aria-hidden="true" />
+              Open to new opportunities
+            </span>
+          </div>
+
+          <div className="hero-animate hero-animate-2">
+            <p className="hero-greeting">Hi, I'm</p>
+            <h1 className="hero-name">Prachi Jethava</h1>
+          </div>
+
+          <div className="hero-animate hero-animate-3">
+            <div className="hero-role" aria-live="polite">
+              <span className="typewriter-text">{role}</span>
+              <span className="typewriter-cursor" aria-hidden="true">
+                |
+              </span>
+            </div>
+          </div>
+
+          <div className="hero-animate hero-animate-4">
+            <p className="hero-bio">
+              Software Engineer experienced in building full-stack web
+              applications using React, TypeScript, and Node.js — with strong
+              foundations in API design, system architecture, and scalable
+              backend services.
+            </p>
+          </div>
+
+          <div className="hero-animate hero-animate-5">
+            <div className="hero-cta">
+              <button
+                className="btn-primary"
+                onClick={() => scrollTo("projects")}
               >
-                Hi There!{" "}
-                <span className="wave" role="img" aria-labelledby="wave">
-                  👋🏻
-                </span>
-              </h1>
-
-              <h1 className="heading-name" style={{ marginBottom: "15px" }}>
-                I'M
-                <strong className="main-name"> PRACHI JETHAVA</strong>
-              </h1>
-
-              <div
-                style={{
-                  padding: "30px 0px", // Adds spacing for better alignment
-                  textAlign: "center",
-                }}
+                View Projects
+              </button>
+              <a
+                href={resumePDF}
+                download="Prachi_Jethava_Resume.pdf"
+                className="btn-outline"
               >
-                <Type />
-              </div>
-            </Col>
+                <FiDownload size={15} />
+                Resume
+              </a>
+            </div>
+          </div>
 
-            {/* Image Section */}
-            <Col
-              md={5}
-              xs={12}
-              className="d-flex justify-content-center align-items-center"
-              style={{
-                paddingBottom: 20,
-                marginTop: "20px", // Ensures space between text and image
-              }}
-            >
-              <img
-                src={homeLogo}
-                alt="Prachi's formal pic"
-                className="img-fluid"
-                style={{
-                  maxHeight: "300px", // Adjusts image size for mobile
-                  borderRadius: "20%",
-                  marginTop: "0px", // Prevents overlap with text
-                }}
-              />
-            </Col>
-          </Row>
-        </Container>
-      </Container>
-      <Home2 />
+          <div className="hero-animate hero-animate-6">
+            <div className="hero-socials">
+              <a
+                href="https://github.com/prachi1211"
+                target="_blank"
+                rel="noreferrer"
+                className="social-icon-link"
+                aria-label="GitHub"
+              >
+                <AiFillGithub />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/prachijethava/"
+                target="_blank"
+                rel="noreferrer"
+                className="social-icon-link"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedinIn />
+              </a>
+              <a
+                href="mailto:prachi.jethava2001@gmail.com"
+                className="social-icon-link"
+                aria-label="Email"
+              >
+                <HiOutlineMail />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Photo Column ── */}
+        <div className="hero-image-col hero-img-animate">
+          <div className="hero-image-wrapper">
+            <div className="hero-image-glow" aria-hidden="true" />
+            <div className="hero-image-ring" aria-hidden="true">
+              <div className="hero-image-ring-inner" />
+            </div>
+            <img
+              src={photo}
+              alt="Prachi Jethava"
+              className="hero-photo"
+              loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Scroll hint */}
+      <div className="hero-scroll" aria-hidden="true">
+        <div className="hero-scroll-line" />
+        <span className="hero-scroll-label">scroll</span>
+      </div>
     </section>
   );
 }
 
-export default Home;
-
+export default Hero;

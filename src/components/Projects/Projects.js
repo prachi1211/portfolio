@@ -1,118 +1,152 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import ProjectCard from "./ProjectCards";
-import Particle from "../Particle";
-import youtube from "../../Assets/Projects/Youtube.png";
-import vacaybuddy from "../../Assets/Projects/Vacay.png";
-import news from "../../Assets/Projects/News.png";
-import music from "../../Assets/Projects/music.png";
-import ipl from "../../Assets/Projects/IPL.png";
-import resume from "../../Assets/Projects/resume.png"
-import employee from "../../Assets/Projects/Employee.png";
-import cancer from "../../Assets/Projects/cancer.png";
+import React, { useEffect, useRef } from "react";
+import { AiFillGithub } from "react-icons/ai";
+import { FiExternalLink } from "react-icons/fi";
+
+const PROJECTS = [
+  {
+    title: "Arcova",
+    subtitle: "Unified Travel Platform",
+    description:
+      "Full-stack travel marketplace with role-based dashboards for travelers, hosts, and admins. Delivers hotel & flight search, booking management, dynamic pricing, a streaming AI trip planner via SSE, and secure multi-tenant access enforced by Supabase Auth + Row Level Security.",
+    tags: ["React", "TypeScript", "Node.js", "Supabase", "Tailwind CSS", "Claude AI", "Vite"],
+    github: "https://github.com/prachi1211/arcova-frontend",
+    live:   "https://witharcova.vercel.app",
+    featured: true,
+  },
+  {
+    title: "HomeSync",
+    subtitle: "Household Operating System",
+    description:
+      "Household OS for shared living — unifying grocery management with auto-categorisation, smart chore rotation (fixed, rotating, self-assigned), Splitwise-style expense splitting with receipt photos, and per-member contribution analytics.",
+    tags: ["React", "TypeScript", "Node.js", "Express", "Supabase", "PostgreSQL"],
+    github: "https://github.com/prachi1211/homesync_frontend",
+    live:   null,
+    featured: true,
+  },
+  {
+    title: "Course Compass",
+    subtitle: "AI Academic Advisor",
+    description:
+      "AI-powered course selection assistant generating personalised academic plans and career roadmaps with Gemini AI. Achieves 90% recommendation accuracy while validating all prerequisites, credit limits, and schedule conflicts.",
+    tags: ["React", "Tailwind CSS", "MongoDB", "Vite", "Gemini API"],
+    github: "https://github.com/prachi1211/iu-course-compass-ai",
+    live:   null,
+    featured: false,
+  },
+  {
+    title: "VacayBuddy",
+    subtitle: "Flight Booking Platform",
+    description:
+      "Full-stack flight booking and itinerary management platform with intelligent destination recommendations. Surfaces 5 similar places based on search history with Redis-cached suggestions for fast repeat lookups.",
+    tags: ["React", "Node.js", "PostgreSQL", "REST API", "Redis"],
+    github: "https://github.com/juyee1698/VacayBuddy-backend",
+    live:   null,
+    featured: false,
+  },
+  {
+    title: "Unveiling Cloud Trends",
+    subtitle: "YouTube Data Analytics",
+    description:
+      "Cloud-driven data pipeline analysing YouTube's trending dataset to surface emerging video categories and audience demographics — delivering actionable insights for content creators and businesses via interactive dashboards.",
+    tags: ["Python", "AWS", "Cloud", "ETL", "Data Engineering", "Analytics"],
+    github: "https://github.com/prachi1211/ECC",
+    live:   null,
+    featured: false,
+  },
+  {
+    title: "Fix Your Resume",
+    subtitle: "AI Resume Optimizer",
+    description:
+      "AI-powered resume optimisation tool using Google Gemini. Upload a resume and job description to receive targeted keyword suggestions, content alignment improvements, and ATS optimisation tips — instantly.",
+    tags: ["React", "Gemini API", "Prompt Engineering", "JavaScript"],
+    github: "https://github.com/prachi1211/FixYourResume",
+    live:   null,
+    featured: false,
+  },
+];
+
+function ProjectCard({ project, index }) {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) el.classList.add("visible"); },
+      { threshold: 0.1 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  const delay = `${(index % 3) * 0.1}s`;
+
+  return (
+    <article
+      ref={ref}
+      className={`project-card animate-in${project.featured ? " featured" : ""}`}
+      style={{ "--delay": delay }}
+    >
+      <div className="project-card-top">
+        <div className="project-icon" aria-hidden="true">
+          {project.title.charAt(0)}
+        </div>
+        <div className="project-links">
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noreferrer"
+              className="project-link"
+              aria-label={`${project.title} GitHub repository`}
+            >
+              <AiFillGithub />
+            </a>
+          )}
+          {project.live && (
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noreferrer"
+              className="project-link project-link-live"
+              aria-label={`${project.title} live demo`}
+            >
+              <FiExternalLink />
+            </a>
+          )}
+        </div>
+      </div>
+
+      <span className="project-subtitle">{project.subtitle}</span>
+      <h3 className="project-title">{project.title}</h3>
+      <p className="project-description">{project.description}</p>
+
+      <div className="project-tags">
+        {project.tags.map((t) => (
+          <span key={t} className="tag">{t}</span>
+        ))}
+      </div>
+    </article>
+  );
+}
+
 function Projects() {
   return (
-    <Container fluid className="project-section">
-      <Particle />
-      <Container>
-        <h1 className="project-heading">
-          My <strong className="purple">Projects </strong>
-        </h1>
-        <p style={{ color: "white" }}>
-          Here are a few projects I've worked on.
+    <section id="projects" className="section projects-section">
+      <div className="section-container">
+        <div className="section-label">Projects</div>
+        <h2 className="section-title">Things I've Built</h2>
+        <p className="section-subtitle">
+          A curated selection of projects — from AI-powered platforms to cloud data pipelines.
         </p>
-        <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
-        <Col md={4} className="project-card">
-            <ProjectCard
-              imgPath={employee}
-              isBlog={false}
-              title="Crimson Compass Course"
-              description="Crimson Course Compass is an AI-powered course selection assistant that helps university students seamlessly choose the most suitable courses for their semester. By combining intelligent recommendations with a conversational chatbot, the platform personalizes suggestions based on key inputs like career goals, preferred subjects (both required), preferred days, and enrollment type. Students can search for courses, receive tailored recommendations, interact with the AI assistant, and manage a Wishlist of selected courses. With features like alternative course suggestions and context-aware responses, Crimson Course Compass streamlines the decision-making process and ensures students stay aligned with their academic and career goals."
-              ghLink= "https://github.com/prachi1211/iu-course-compass-ai"
-            />
-          </Col>
-          <Col md={4} className="project-card">
-            <ProjectCard
-              imgPath={youtube}
-              isBlog={false}
-              title="Unveiling Trends: A Cloud-Driven Data"
-              description="The project extracted insights from YouTube data to identify emerging video categories and audience for demographics, helping optimize online video strategies and empower businesses and content creators to make informed decisions."
-              ghLink="https://github.com/prachi1211/ECC"
-            />
-          </Col>
 
-          <Col md={4} className="project-card">
-            <ProjectCard
-              imgPath={vacaybuddy}
-              isBlog={false}
-              title="Flight Booking System-VacayBuddy"
-              description="Developed a user platform for flight booking, itinerary management, search, and recommendations. The ystem suggested 5 similar places based on user searches or itinerary additions, with data cached for future recommendations."
-              ghLink="https://github.com/juyee1698/VacayBuddy-backend"
-            />
-          </Col>
-
-          <Col md={4} className="project-card">
-            <ProjectCard
-              imgPath={resume}
-              isBlog={false}
-              title="Fix Your Resume"
-              description="Fix Your ResumeAn AI-powered tool using Gemini's AI prompt engineering to optimize resumes. Users upload their resumes and a job description, receiving tailored suggestions to add keywords, align content, and enhance their chances of landing the job."
-              ghLink="https://github.com/prachi1211/FixYourResume"
-            />
-          </Col>
-
-          <Col md={4} className="project-card">
-            <ProjectCard
-              imgPath={ipl}
-              isBlog={false}
-              title="IPL Score Prediction (IBM top in Hack Challenge)"
-              description="Online code and markdown editor build with react.js. Online Editor which supports html, css, and js code with instant view of website. Online markdown editor for building README file which supports GFM, Custom Html tags with toolbar and instant preview.Both the editor supports auto save of work using Local Storage"
-              ghLink="https://github.com/prachi1211/IPL_Score_Prediction"
-            />
-          </Col>
-
-          <Col md={4} className="project-card">
-            <ProjectCard
-              imgPath={employee}
-              isBlog={false}
-              title="Employee Management System"
-              description="Developed a web-based employee management system that allows users to add, update, and delete employee records alongwith job recommendation based on profile. The system also provides a search feature to find employees by name, department, or job title."
-              ghLink="https://github.com/prachi1211/Employee-Management-System"
-            />
-          </Col>
-
-          <Col md={4} className="project-card">
-            <ProjectCard
-              imgPath={news}
-              isBlog={false}
-              title="News Article Summarisation"
-              description="An article summarization tool has been developed based on abstractive analysis, which ranks articles to identify the best matches. A web application has been created that generates summaries upon article upload."
-              ghLink="https://github.com/prachi1211/News-Article-Summarisation"
-            />
-          </Col>
-
-          <Col md={4} className="project-card">
-            <ProjectCard
-              imgPath={cancer}
-              isBlog={false}
-              title="Breast Cancer Detection"
-              description="Image data analysis was performed using processing techniques to enhance detection accuracy in distinguishing between benign and malignant tumors. A deep learning model, specifically Inception v3, was implemented to extract features and classify tumor spots based on a defined threshold after image cleaning."
-              ghLink="https://github.com/prachi1211/Breast-Cancer-Detection"
-            />
-          </Col>
-
-          <Col md={4} className="project-card">
-            <ProjectCard
-              imgPath={music}
-              isBlog={false}
-              title="Music Recommendation System"
-              description="Developed a recommendation system that suggests options based on the nearest match, using preferences from users with similar tastes to provide personalized suggestions."
-              ghLink="https://github.com/prachi1211/Music-Recommendation-System"
-            />
-          </Col>
-        </Row>
-      </Container>
-    </Container>
+        <div className="projects-grid">
+          {PROJECTS.map((project, i) => (
+            <ProjectCard key={project.title} project={project} index={i} />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 

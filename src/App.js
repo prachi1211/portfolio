@@ -1,54 +1,57 @@
 import React, { useState, useEffect } from "react";
-import Preloader from "../src/components/Pre";
+import Pre from "./components/Pre";
 import Navbar from "./components/Navbar";
-import Home from "./components/Home/Home";
+import Hero from "./components/Home/Home";
 import About from "./components/About/About";
+import Journey from "./components/Timeline/Timeline";
 import Projects from "./components/Projects/Projects";
+import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer";
-import Resume from "./components/Resume/ResumeNew";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from "react-router-dom";
-import ScrollToTop from "./components/ScrollToTop";
+import CursorTrail from "./components/CursorTrail";
+import FlowBackground from "./components/FlowBackground";
 import "./style.css";
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-  const [load, updateLoad] = useState(true);
+  const [load, setLoad] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      updateLoad(false);
-    }, 1200);
-
+    const timer = setTimeout(() => setLoad(false), 1200);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <Router>
-      <Preloader load={load} />
-      <div className="App" id={load ? "no-scroll" : "scroll"}>
+    <>
+      {/* ── z-index 0: aurora gradient (body::before) + dot grid + orbs ── */}
+      <div className="bg-grid" aria-hidden="true" />
+      <div className="bg-orbs" aria-hidden="true">
+        <div className="bg-orb bg-orb-1" />
+        <div className="bg-orb bg-orb-2" />
+        <div className="bg-orb bg-orb-3" />
+      </div>
+
+      {/* ── z-index 1: particle network + energy pulses ── */}
+      <FlowBackground />
+
+      {/* ── z-index 4: grain texture ── */}
+      <div className="grain-overlay" aria-hidden="true" />
+
+      {/* ── z-index 9998/9999: cursor trail ── */}
+      <CursorTrail />
+
+      {/* ── App shell (z-index 3) ── */}
+      <Pre load={load} />
+      <div className={`site-content${load ? " no-scroll" : ""}`}>
         <Navbar />
-        <ScrollToTop />
-        <Routes>
-          {/* Default route for Home */}
-          <Route path="/" element={<Home />} />
-
-          {/* Other routes */}
-          <Route path="/project" element={<Projects />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/resume" element={<Resume />} />
-
-          {/* Redirect any undefined route to Home */}
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
+        <main>
+          <Hero />
+          <About />
+          <Journey />
+          <Projects />
+          <Contact />
+        </main>
         <Footer />
       </div>
-    </Router>
+    </>
   );
 }
 
