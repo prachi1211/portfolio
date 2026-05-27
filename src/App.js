@@ -7,8 +7,6 @@ import Journey from "./components/Timeline/Timeline";
 import Projects from "./components/Projects/Projects";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer";
-import CursorTrail from "./components/CursorTrail";
-import FlowBackground from "./components/FlowBackground";
 import "./style.css";
 
 function App() {
@@ -21,24 +19,10 @@ function App() {
 
   return (
     <>
-      {/* ── z-index 0: aurora gradient (body::before) + dot grid + orbs ── */}
+      {/* ── static background grid ── */}
       <div className="bg-grid" aria-hidden="true" />
-      <div className="bg-orbs" aria-hidden="true">
-        <div className="bg-orb bg-orb-1" />
-        <div className="bg-orb bg-orb-2" />
-        <div className="bg-orb bg-orb-3" />
-      </div>
 
-      {/* ── z-index 1: particle network + energy pulses ── */}
-      <FlowBackground />
-
-      {/* ── z-index 4: grain texture ── */}
-      <div className="grain-overlay" aria-hidden="true" />
-
-      {/* ── z-index 9998/9999: cursor trail ── */}
-      <CursorTrail />
-
-      {/* ── App shell (z-index 3) ── */}
+      {/* ── App shell ── */}
       <Pre load={load} />
       <div className={`site-content${load ? " no-scroll" : ""}`}>
         <Navbar />

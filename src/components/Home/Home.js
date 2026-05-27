@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { AiFillGithub } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
-import { FiDownload } from "react-icons/fi";
 import photo from "../../Assets/prachi_formal_final.jpg";
-import resumePDF from "../../Assets/Prachi_Piyushbhai_Jethava_resume.pdf";
+// import { FiDownload } from "react-icons/fi";
+// import resumePDF from "../../Assets/Prachi_Piyushbhai_Jethava_resume.pdf";
 
 const ROLES = ["Software Engineer", "Full Stack Developer", "Web Developer"];
 
@@ -54,7 +54,6 @@ function Hero() {
           {/* Each child has a staggered hero-animate class */}
           <div className="hero-animate hero-animate-1">
             <span className="hero-tag">
-              <span className="hero-tag-dot" aria-hidden="true" />
               Open to new opportunities
             </span>
           </div>
@@ -90,14 +89,14 @@ function Hero() {
               >
                 View Projects
               </button>
-              <a
+              {/* <a
                 href={resumePDF}
                 download="Prachi_Jethava_Resume.pdf"
                 className="btn-outline"
               >
                 <FiDownload size={15} />
                 Resume
-              </a>
+              </a> */}
             </div>
           </div>
 
@@ -135,10 +134,6 @@ function Hero() {
         {/* ── Photo Column ── */}
         <div className="hero-image-col hero-img-animate">
           <div className="hero-image-wrapper">
-            <div className="hero-image-glow" aria-hidden="true" />
-            <div className="hero-image-ring" aria-hidden="true">
-              <div className="hero-image-ring-inner" />
-            </div>
             <img
               src={photo}
               alt="Prachi Jethava"
@@ -147,12 +142,6 @@ function Hero() {
             />
           </div>
         </div>
-      </div>
-
-      {/* Scroll hint */}
-      <div className="hero-scroll" aria-hidden="true">
-        <div className="hero-scroll-line" />
-        <span className="hero-scroll-label">scroll</span>
       </div>
     </section>
   );

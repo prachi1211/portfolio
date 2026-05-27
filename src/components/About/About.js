@@ -43,10 +43,15 @@ function About() {
               multi-tenant access patterns.
             </p>
             <p>
-              Beyond code, I led the{" "}
-              <span className="text-accent">Women Who Code</span> alliance at IU,
-              running workshops on SQL, Python, data structures, and networking
-              to help others grow in tech.
+              At IU I served as a{" "}
+              <span className="text-accent">Research Assistant</span> at the
+              Kelley School of Business — applying NLP and fuzzy-matching
+              techniques to FEC political finance datasets to support
+              quantitative research on corporate political behaviour. I also led
+              the{" "}
+              <span className="text-accent">Women Who Code</span> alliance as
+              Lead Intern at CEWIT, running technical workshops and managing
+              data dashboards tracking 13 K+ affiliates.
             </p>
           </div>
 
