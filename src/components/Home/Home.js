@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { AiFillGithub } from "react-icons/ai";
-import { FaLinkedinIn } from "react-icons/fa";
+import { FaLinkedinIn, FaFutbol, FaPaintBrush } from "react-icons/fa";
+import { GiCookingPot } from "react-icons/gi";
 import { HiOutlineMail } from "react-icons/hi";
-import photo from "../../Assets/prachi_formal_final.jpg";
+import avatarImg from "../../Assets/photo.png";
+// import { AvatarBody, AvatarPeek } from "./Avatar";
+// import photo from "../../Assets/prachi_formal_final.jpg";
 // import { FiDownload } from "react-icons/fi";
 // import resumePDF from "../../Assets/Prachi_Piyushbhai_Jethava_resume.pdf";
 
@@ -131,15 +134,37 @@ function Hero() {
           </div>
         </div>
 
-        {/* ── Photo Column ── */}
+        {/* ── Avatar Column ── */}
         <div className="hero-image-col hero-img-animate">
-          <div className="hero-image-wrapper">
-            <img
-              src={photo}
-              alt="Prachi Jethava"
-              className="hero-photo"
-              loading="eager"
-            />
+          <div className="hero-avatar-frame">
+            <div className="hero-image-wrapper">
+              <img
+                src={avatarImg}
+                alt="Illustrated avatar of Prachi"
+                className="hero-avatar-img"
+              />
+            </div>
+            <span
+              className="hero-badge hero-badge-sports"
+              aria-label="Enjoys sports"
+              title="Sports"
+            >
+              <FaFutbol />
+            </span>
+            <span
+              className="hero-badge hero-badge-cooking"
+              aria-label="Enjoys cooking"
+              title="Cooking"
+            >
+              <GiCookingPot />
+            </span>
+            <span
+              className="hero-badge hero-badge-painting"
+              aria-label="Enjoys painting"
+              title="Painting"
+            >
+              <FaPaintBrush />
+            </span>
           </div>
         </div>
       </div>

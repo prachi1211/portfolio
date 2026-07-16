@@ -6,12 +6,24 @@ import React, { useEffect, useRef } from "react";
 
 const EXPERIENCE = [
   {
-    id: "heartland",
+    id: "yourssafety",
     type: "work",
     current: true,
+    title: "Software Engineer",
+    org: "Yours Safety App LLC",
+    period: "Jun 2026 – Present",
+    points: [
+      "Building and shipping features for a live personal safety iOS application with 100+ users, using JavaScript, Expo, and Firebase; developing user-facing functionality with full ownership from local development through TestFlight validation to App Store production release.",
+      "Integrating Firebase backend services for real-time data sync, authentication flows, and user state management; maintaining reliability and responsiveness for safety-critical features used by real consumers every day.",
+    ],
+    tags: ["JavaScript", "Expo", "React Native", "Firebase", "iOS"],
+  },
+  {
+    id: "heartland",
+    type: "work",
     title: "Senior Consultant – Software Engineer",
     org: "Heartland Community Network",
-    period: "Jun 2025 – Present",
+    period: "Jun 2025 – Jun 2026",
     points: [
       "Led end-to-end development of a full-stack auction platform (React + Node.js), designing REST APIs, PostgreSQL schemas, and role-based dashboards — 40% increase in fundraising outcomes post-MVP.",
       "Designed scalable architecture with documented APIs, ERDs, and system flows, making the platform straightforward to extend and maintain.",
@@ -76,7 +88,7 @@ const EXTRA = [
     type: "extra",
     title: "Research Assistant",
     org: "Kelley School of Business, Indiana University Bloomington",
-    period: "2024",
+    period: "Jan 2026 – Jun 2026",
     points: [
       "Processed FEC political donation datasets, performing fuzzy matching of employer names to stock tickers across firm-year observations — handling inconsistent naming conventions (e.g., 'Walmart' vs 'Walmart Co.') using NLP-based similarity techniques.",
       "Consolidated CEO and employee political contribution data into structured firm-year metrics to support quantitative research on corporate political behaviour.",

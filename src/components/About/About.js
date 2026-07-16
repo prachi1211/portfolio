@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 const STATS = [
   { number: "3+", label: "Years Building" },
   { number: "6+", label: "Projects Shipped" },
-  { number: "3",  label: "Industry Roles" },
+  { number: "∞",  label: "Curious Mind" },
 ];
 
 function About() {
@@ -29,29 +29,26 @@ function About() {
         <div className="about-grid">
           <div className="about-text">
             <p>
-              I'm a <span className="text-accent">Software Engineer</span> with
-              a Master's in Computer Science from{" "}
+              I'm Prachi — a{" "}
+              <span className="text-accent">Software Engineer</span> by trade,
+              but a curious mind first. I love figuring out how things work,
+              whether that's a stubborn bug in production code or a new recipe
+              I'm attempting for the fifth time.
+            </p>
+            <p>
+              I did my Master's in Computer Science at{" "}
               <span className="text-accent">Indiana University Bloomington</span>,
-              passionate about building products that are technically solid and
-              genuinely useful.
+              and I genuinely enjoy the craft of building — clean APIs,
+              thoughtful interfaces, systems that hold up under real use. But
+              the same curiosity that pulls me into a hard engineering problem
+              also pulls me onto a soccer field, into a kitchen experimenting
+              with a new dish, or in front of a canvas trying to get a colour
+              just right.
             </p>
             <p>
-              I specialize in full-stack development — designing clean REST APIs,
-              building responsive React frontends, and architecting scalable
-              backend systems. I've taken production platforms from zero to
-              launch, integrating AI capabilities and enforcing secure,
-              multi-tenant access patterns.
-            </p>
-            <p>
-              At IU I served as a{" "}
-              <span className="text-accent">Research Assistant</span> at the
-              Kelley School of Business — applying NLP and fuzzy-matching
-              techniques to FEC political finance datasets to support
-              quantitative research on corporate political behaviour. I also led
-              the{" "}
-              <span className="text-accent">Women Who Code</span> alliance as
-              Lead Intern at CEWIT, running technical workshops and managing
-              data dashboards tracking 13 K+ affiliates.
+              I think the best engineers stay students — so I'm always picking
+              up something new, whether it's a framework, a sport, or a
+              painting that didn't turn out right the first three times.
             </p>
           </div>
 

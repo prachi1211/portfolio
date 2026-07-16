@@ -413,25 +413,53 @@ body::before {
 [data-theme="light"] .social-icon-link { background: rgba(0,0,0,0.04); }
 [data-theme="light"] .social-icon-link:hover { color: #7c3aed; background: rgba(139,92,246,0.08); }
 
-/* Photo */
+/* Avatar */
 .hero-image-col { display: flex; justify-content: center; align-items: center; }
+.hero-avatar-frame { position: relative; width: 300px; height: 300px; }
 .hero-image-wrapper {
-  width: 300px; height: 300px; border-radius: 50%;
+  width: 100%; height: 100%; border-radius: 50%;
   border: 2px solid rgba(168, 85, 247, 0.28);
   box-shadow: 0 0 0 6px rgba(168, 85, 247, 0.07), 0 12px 40px rgba(0,0,0,0.4);
   overflow: hidden;
 }
-.hero-photo {
-  width: 100%; height: 100%;
-  object-fit: cover; object-position: top; display: block;
+.hero-avatar-svg {
+  width: 100%; height: 100%; display: block;
 }
+.hero-avatar-img {
+  width: 100%; height: 100%; display: block; object-fit: cover;
+}
+
+/* Peeking head + waving hand, layered above the circular frame (unused while hero-avatar-img is active) */
+/* .hero-avatar-peek {
+  position: absolute; z-index: 2; top: -54px; left: 50%;
+  width: 250px; transform: translateX(-50%);
+  pointer-events: none;
+}
+.hero-avatar-peek-svg { width: 100%; display: block; aspect-ratio: 260 / 280; } */
+
+/* Hobby badges — static stickers around the avatar frame */
+.hero-badge {
+  position: absolute; z-index: 1; transform: translate(-50%, -50%);
+  display: flex; align-items: center; justify-content: center;
+  width: 46px; height: 46px; border-radius: 50%;
+  background: var(--bg-card); border: 1px solid var(--border);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  font-size: 1.15rem;
+  transition: transform 0.25s var(--ease), border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+.hero-badge:hover { transform: translate(-50%, -50%) translateY(-3px); border-color: var(--border-hover); }
+.hero-badge-sports   { top: 45%; left: 99%; color: var(--teal); }
+.hero-badge-painting { top: 58%; left: -4%; color: var(--pink); }
+.hero-badge-cooking  { top: 97%; left: 36%; color: var(--purple-light); }
 
 @media (max-width: 900px) {
   .hero-container { grid-template-columns: 1fr; text-align: center; gap: 44px; }
   .hero-image-col { order: -1; }
   .hero-bio, .hero-tag { margin-inline: auto; }
   .hero-cta, .hero-socials { justify-content: center; }
-  .hero-image-wrapper { width: 210px; height: 210px; }
+  .hero-avatar-frame { width: 210px; height: 210px; }
+  .hero-badge { width: 38px; height: 38px; font-size: 0.95rem; }
 }
 
 /* ============================================================ */
