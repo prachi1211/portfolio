@@ -572,7 +572,14 @@ ul  { list-style: none; }
 .field textarea { min-height: 120px; resize: vertical; }
 .field input:focus, .field textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
 
-.form-status { font-size: 0.85rem; margin-top: 10px; }
+/* Honeypot: off-screen rather than display:none, which some bots detect. */
+.hp-field {
+  position: absolute; left: -9999px; width: 1px; height: 1px;
+  opacity: 0; pointer-events: none;
+}
+
+.form-status { font-size: 0.85rem; margin-top: 10px; line-height: 1.6; }
+.form-status a { text-decoration: underline; }
 .form-status.success { color: #4B7A3E; }
 .form-status.error   { color: var(--terracotta); }
 

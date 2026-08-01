@@ -22,6 +22,7 @@ const LINKS = [
 
 function Contact() {
   const ref = useRef(null);
+  const botField = useRef(null);
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState(null); // null | "sending" | "success" | "error" | "unconfigured"
 
@@ -43,6 +44,13 @@ function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Bots fill hidden fields; people don't. Pretend it worked and drop it.
+    if (botField.current?.value) {
+      setStatus("success");
+      setForm({ name: "", email: "", message: "" });
+      return;
+    }
+
     if (!WEB3FORMS_KEY) {
       setStatus("unconfigured");
       return;
@@ -52,10 +60,12 @@ function Contact() {
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
-          subject: `New message from ${form.name} via prachi.vercel.app`,
+          subject: `Portfolio message from ${form.name}`,
+          from_name: "prachi.vercel.app",
+          replyto: form.email,
           ...form,
         }),
       });
@@ -101,19 +111,38 @@ function Contact() {
                 value={form.message} onChange={handleChange} required
               />
             </div>
+            {/* Honeypot — hidden from people, irresistible to bots. */}
+            <input
+              ref={botField}
+              type="checkbox"
+              name="botcheck"
+              className="hp-field"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+            />
+
             <button className="btn btn-primary" type="submit" disabled={status === "sending"}>
               {status === "sending" ? "Sending…" : "Send Message"}
             </button>
 
-            {status === "success" && (
-              <p className="form-status success">Thanks — your message is on its way. I'll get back to you soon.</p>
-            )}
-            {status === "error" && (
-              <p className="form-status error">Something went wrong sending that. Try again, or email me directly.</p>
-            )}
-            {status === "unconfigured" && (
-              <p className="form-status error">This form isn't wired up yet — email me directly below instead.</p>
-            )}
+            <div aria-live="polite">
+              {status === "success" && (
+                <p className="form-status success">Thanks — your message is on its way. I'll get back to you soon.</p>
+              )}
+              {status === "error" && (
+                <p className="form-status error">
+                  That didn't send. Try again, or email me at{" "}
+                  <a href="mailto:prachi.jethava2001@gmail.com">prachi.jethava2001@gmail.com</a>.
+                </p>
+              )}
+              {status === "unconfigured" && (
+                <p className="form-status error">
+                  This form isn't connected yet. Email me at{" "}
+                  <a href="mailto:prachi.jethava2001@gmail.com">prachi.jethava2001@gmail.com</a>.
+                </p>
+              )}
+            </div>
           </form>
 
           <div className="contact-side">

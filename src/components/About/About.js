@@ -29,8 +29,7 @@ const STACK = [
   "React", "SQL", "AWS", "GCP", "Agentic AI", "RAG",
 ];
 
-// TODO: replace with the real Credly profile URL.
-const CREDLY_URL = "https://www.credly.com/users/prachi-jethava";
+const CREDLY_URL = "https://www.credly.com/users/prachi.jethava";
 
 function About() {
   const ref = useRef(null);
