@@ -17,6 +17,24 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
+  /* Highlight whichever panel is sitting in the middle band of the viewport. */
+  useEffect(() => {
+    const panels = document.querySelectorAll(".panel");
+    if (!panels.length || !("IntersectionObserver" in window)) return;
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(({ target, isIntersecting }) =>
+          target.classList.toggle("in-view", isIntersecting)
+        );
+      },
+      { rootMargin: "-32% 0px -32% 0px", threshold: 0 }
+    );
+
+    panels.forEach((p) => obs.observe(p));
+    return () => obs.disconnect();
+  }, []);
+
   return (
     <>
       {/* ── static background grid ── */}

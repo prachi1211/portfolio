@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "demos",
+      "runtimeExecutable": "C:\\Users\\pavanpandya\\miniconda3\\python.exe",
+      "runtimeArgs": ["-m", "http.server", "4321", "--directory", "demos"],
+      "port": 4321
+    },
+    {
+      "name": "app",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["start"],
+      "port": 3000
+    }
+  ]
+}

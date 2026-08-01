@@ -13,9 +13,9 @@ const NAV_ITEMS = [
   { id: "about",    label: "About",    Icon: AiOutlineUser },
   { id: "journey",  label: "Journey",  Icon: MdOutlineTimeline,
     sub: [
-      { id: "experience",     label: "Experience" },
-      { id: "education",      label: "Education" },
-      { id: "extracurricular",label: "Extra Curricular" },
+      { id: "experience", label: "Experience" },
+      { id: "leadership", label: "Leadership" },
+      { id: "education",  label: "Education" },
     ]
   },
   { id: "projects", label: "Projects", Icon: AiOutlineFundProjectionScreen },
@@ -30,7 +30,7 @@ function Navbar() {
   const [active,    setActive]    = useState("hero");
   const [menuOpen,  setMenuOpen]  = useState(false);
   const [journeyOpen, setJourneyOpen] = useState(false);
-  const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "dark");
+  const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "light");
   const dropdownRef = useRef(null);
 
   /* Apply + persist theme */

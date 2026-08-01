@@ -4,10 +4,7 @@ function Footer() {
   return (
     <footer className="site-footer">
       <p>
-        Designed &amp; built by{" "}
-        <span className="text-accent">Prachi Jethava</span>
-        {" "}·{" "}
-        {new Date().getFullYear()}
+        Designed &amp; built by <span>Prachi Jethava</span> · {new Date().getFullYear()}
       </p>
     </footer>
   );
