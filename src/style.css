@@ -367,9 +367,14 @@ ul  { list-style: none; }
 
 @media (max-width: 900px) {
   .hero-section { min-height: auto; padding-top: 120px; padding-bottom: 60px; }
-  .hero-blob, .hero-blob.front { width: 150%; height: 60%; right: -30%; top: auto; bottom: -4%; border-radius: 0 0 50% 50% / 0 0 30% 30%; }
-  .hero-photo { position: relative; right: auto; bottom: auto; width: 68%; max-height: none; margin: 36px auto 0; border-radius: 28px; }
-  .hero-grid { display: flex; flex-direction: column; }
+  /* Keep the blob under the photo, not under the body copy — muted ink on
+     gold fails contrast. */
+  .hero-blob, .hero-blob.front { width: 150%; height: 42%; right: -30%; top: auto; bottom: -4%; border-radius: 0 0 50% 50% / 0 0 30% 30%; }
+  /* The section itself is a flex row; without this the photo sits beside
+     the copy as a sibling flex item instead of stacking under it. */
+  .hero-section { flex-direction: column; justify-content: center; }
+  .hero-photo { position: relative; right: auto; bottom: auto; width: 68%; max-height: none; margin: 36px auto 0; border-radius: 28px; order: 2; }
+  .hero-grid { display: flex; flex-direction: column; order: 1; }
   .hero-content { text-align: center; margin-inline: auto; }
   .hero-cta, .hero-socials { justify-content: center; }
 }
@@ -550,8 +555,12 @@ ul  { list-style: none; }
 
 .load-more-wrap { text-align: center; margin-top: 8px; }
 
-@media (max-width: 720px) {
-  .proj-row, .proj-row:nth-child(even) { flex-direction: column; }
+/* 860, not 720: the panel eats ~112px of content width, so side-by-side
+   media + copy gets cramped well before the old breakpoint. */
+@media (max-width: 860px) {
+  /* Both nth-child rules above are (0,2,0); match that here or odd rows never stack. */
+  .proj-row:nth-child(odd),
+  .proj-row:nth-child(even) { flex-direction: column; }
   .proj-media { min-height: 220px; }
   .proj-info { padding: 32px 26px; }
 }
